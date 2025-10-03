@@ -44,10 +44,10 @@ toggleMyUI;
 
 
 // creats a window and the width and height and also the name and if is showing or not
-string $myCookie = `window -widthHeight 300 300 -title "MakeLifeEz" -visible on`;
+string $myCookie = `window -widthHeight 230 110 -title "MakeLifeEz" -visible on`;
  
 // creates a layout
-columnLayout -adjustableColumn true -rowSpacing 10;
+columnLayout -adjustableColumn true -rowSpacing 15;
  
 // button to select all objects and the colour is dark green
 button -label "SelectAll" 

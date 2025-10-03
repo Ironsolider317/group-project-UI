@@ -112,3 +112,38 @@ global proc assignColourShader(float $r, float $g, float $b) {
 }
  
  myMaterialUI;
+
+
+
+
+
+
+
+
+
+
+// Cube Scaler
+
+// Delete any existing window with this name
+if (`window -exists cubeScaler`) {
+    deleteUI -window cubeScaler;
+}
+
+// Define a procedure for "scaleCubes"
+global proc scale() {
+    // scale Cubes
+    string $sel[] = `ls -sl`;
+
+    for ($each in $sel){
+            scale -r 2 2 2 $each;
+        }
+    }
+
+// Build the window
+window -title "Cube Scaler" -widthHeight 200 100 cubeScaler;
+columnLayout -adjustableColumn true -rowSpacing 10;
+    button -label "Scale Cubes" -command "scale()";
+setParent ..;
+
+// Show the window
+showWindow cubeScaler;

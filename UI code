@@ -66,3 +66,49 @@ button -label "CloseUI"
  
 // shows the window
 showWindow $myCookie;
+
+
+
+
+
+
+
+
+
+// UI to change an objects colour
+global proc MaterialUI() {
+    string $window = "MaterialWindow";
+ 
+    if (`window -exists $window`) {
+        deleteUI $window;
+    }
+ 
+    window -title "Change Shaded Colour" $window;
+    columnLayout -adjustableColumn true;
+ 
+    // Buttons that change the objects colour
+    button -label "Set to Red" -command "assignColourShader(1,0,0)";
+    button -label "Set to Green" -command "assignColourShader(0,1,0)";
+    button -label "Set to Blue" -command "assignColourShader(0,0,1)";
+ 
+    showWindow $window;
+}
+ 
+global proc assignColourShader(float $r, float $g, float $b) {
+    string $sel[] = `ls -sl`;
+    if (size($sel) == 0) {
+        warning "No object selected.";
+        return;
+    }
+ 
+    // Creates a new lambert material 
+    string $shader = `shadingNode -asShader lambert`;
+    string $sg = `sets -renderable true -noSurfaceShader true -empty -name ($shader + "SG")`;
+    connectAttr -f ($shader + ".outColour") ($sg + ".surfaceShader");
+    setAttr ($shader + ".colour") -type double3 $r $g $b;
+ 
+    // Assigns a colour to the selected object
+    sets -e -forceElement $sg $sel;
+}
+ 
+ myMaterialUI;

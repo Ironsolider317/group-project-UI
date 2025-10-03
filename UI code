@@ -42,7 +42,7 @@ window -widthHeight 200 100
 -title "My Perfect UI"
 -visible on myCookie;
  
-// makes a button that can delets the window and is called CloseUI and the colour of it red
+// makes a button that can be deleted the window and is called CloseUI and the colour of it red
 columnLayout;
 button -label "CloseUI"
 -backgroundColor 0.8 0.2 0.2 

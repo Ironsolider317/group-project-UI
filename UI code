@@ -37,17 +37,32 @@ global proc toggleMyUI() {
 
 toggleMyUI;
 
-// Create the window
-window -widthHeight 200 100
--title "My Perfect UI"
--visible on myCookie;
+
+
+
+
+
+
+// creates a window and the width and height and also the name and if is showing or not
+string $myCookie = `window -widthHeight 300 300 -title "MakeLifeEz" -visible on`;
  
-// makes a button that can be deleted the window and is called CloseUI and the colour of it red
-columnLayout;
-button -label "CloseUI"
--backgroundColor 0.8 0.2 0.2 
--command "deleteUI myCookie";
+// creates a layout
+columnLayout -adjustableColumn true -rowSpacing 10;
  
-// Shows the window
-showWindow myCookie;
+// button to select all objects and the colour is dark green
+button -label "SelectAll" 
+       -backgroundColor 0.2 0.4 0.2 
+       -command "select -all;";
  
+// button to undo stuff selected and the colour is bright green
+button -label "UndoAll" 
+       -backgroundColor 0.6 1.0 0.6 
+       -command "select -d;";
+ 
+// button to close the window and change the colour to red
+button -label "CloseUI" 
+       -backgroundColor 0.8 0.2 0.2 
+       -command ("deleteUI " + $myCookie);
+ 
+// shows the window
+showWindow $myCookie;

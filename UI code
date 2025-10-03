@@ -43,7 +43,7 @@ toggleMyUI;
 
 
 
-// creates a window and the width and height and also the name and if is showing or not
+// creats a window and the width and height and also the name and if is showing or not
 string $myCookie = `window -widthHeight 300 300 -title "MakeLifeEz" -visible on`;
  
 // creates a layout

@@ -147,3 +147,46 @@ setParent ..;
 
 // Show the window
 showWindow cubeScaler;
+
+
+
+
+
+
+
+// rotater
+
+//Delete any existing window with this name
+//if (`window -exists myUI`) 
+//{
+//    deleteUI -window myUI;
+//}
+
+// Define a procedure for "rotateCube"
+global proc rotate() 
+{
+    string $sel[] = `ls -sl`;
+    for ($each in $sel)
+    {
+        rotate -r 0 18 0;
+    }
+}
+
+global proc deleteUI()
+{
+    if (`window -exists myUI`) 
+    {
+    deleteUI -window myUI;
+    }
+
+}
+
+// Build the window
+window -title "My UI" -widthHeight 200 100 myUI;
+columnLayout -adjustableColumn true -rowSpacing 10;
+    button -label "Rotate" -backgroundColor 1.0 1.0 0.0 -command "rotate()";
+    button -label "Close" -backgroundColor 0.8 0.2 0.2 -command "deleteUI()";
+setParent ..;
+
+// Show the window
+showWindow myUI;
